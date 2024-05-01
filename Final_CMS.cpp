@@ -5,6 +5,26 @@
 #include<conio.h>
 
 using namespace std;
+class Title{
+	public :
+		void gettitle(){
+		system("cls");
+        system("color B0");
+        cout << "\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t******************************************************\n";
+        cout << "\t\t\t\t\t\t\t=====================================================\n";
+        cout << "\t\t\t\t\t\t\t||                                                  ||\n";
+        cout << "\t\t\t\t\t\t\t||         ---------------------------------        ||\n";
+        cout << "\t\t\t\t\t\t\t||        **Contact Management System**             ||\n";
+        cout << "\t\t\t\t\t\t\t||         ---------------------------------        ||\n";
+        cout << "\t\t\t\t\t\t\t||                                                  ||\n";
+        cout << "\t\t\t\t\t\t\t||                                                  ||\n";
+        cout << "\t\t\t\t\t\t\t||                                                  ||\n";
+        cout << "\t\t\t\t\t\t\t=====================================================\n";
+        cout << "\t\t\t\t\t\t\t******************************************************\n\n\n";
+        //cout << " \n\n\n\t\t\t\t\t\t\t Press any key to continue:";
+      //   getch();
+		}  
+};
 
 class Details {
 private:
@@ -16,37 +36,41 @@ private:
 
 public:
     void getdata() {
-        cout << "\t\t*** Enter First Name: ";
+    	system("cls");
+    	Title head;
+        head.gettitle();
+        cout << "\n\t\t Enter First Name: ";
         fflush(stdin);
         cin.get(FName, 50);
 
-        cout << "\t\t*** Enter Last Name: ";
+        cout << "\n\t\t Enter Last Name: ";
+        fflush(stdin);
         cin.get(LName, 50);
-        fflush(stdin);
 
-        cout << "\t\t*** Enter Address: ";
+        cout << "\n\t\t Enter Address: ";
+        fflush(stdin);
         cin.get(Address, 50);
+        
+        cout << "\n\t\t Enter Email: ";
         fflush(stdin);
-
-        cout << "\t\t*** Enter Email: ";
         cin.get(email, 50);
-        fflush(stdin);
 
-        cout << "\t\t*** Enter Phone Number: ";
-        cin >> phone_No;
+        cout << "\n\t\t Enter Phone Number: ";
         fflush(stdin);
+        cin >> phone_No;
     }
 
     void showcontact() {
-        cout << "\t\t*** Name     : " << FName << " " << LName << endl;
-        cout << "\t\t*** Address  : " << Address << endl;
-        cout << "\t\t*** Email    : " << email << endl;
-        cout << "\t\t*** Phone_No : " << phone_No;
+    	//system("cls");
+        cout << "\t\t Name     : " << FName << " " << LName << endl;
+        cout << "\t\t Address  : " << Address << endl;
+        cout << "\t\t Email    : " << email << endl;
+        cout << "\t\t Phone_No : " << phone_No;
     }
 
     void writeonfile() {
         ofstream F1;
-        F1.open("CMS.dat", ios::binary | ios::app);
+        F1.open("CMS.dat",ios::out|ios::app|ios::binary);
         if (!F1.is_open()) {
             cout << "\t\tError opening file!" << endl;
             return;
@@ -58,7 +82,12 @@ public:
     }
 
     void readfromfile() {
-        ifstream F2("CMS.dat", ios::binary);
+    	
+    	system("cls");
+    	//system("cls");
+    	Title head;
+        head.gettitle();
+        ifstream F2("CMS.dat", ios::binary|ios::in);
         if (!F2.is_open()) {
             cout << "\t\tError opening file!" << endl;
             return;
@@ -70,13 +99,15 @@ public:
 
         while (F2.read(reinterpret_cast<char*>(this), sizeof(*this))) {
             showcontact();
-            cout << "\n========================================\n";
+            cout << "\n\t\t========================================\n";
         }
-
         F2.close();
     }
 
     void searchfromfile() {
+    	system("cls");
+    	Title head;
+        head.gettitle();
         long long phone;
         cout << "\t\t*** Enter Phone Number You Want To Search: ";
         cin >> phone;
@@ -103,6 +134,9 @@ public:
     }
 
     void deletefromfile() {
+    	system("cls");
+    	Title head;
+        head.gettitle();
         long long phone;
         cout << "\t\tEnter Phone Number To delete Contact: ";
         cin >> phone;
@@ -140,10 +174,11 @@ public:
 class LoginManager {
 public:
     bool authenticate() {
+    	
         string username, password;
-        cout << "\n\n\t\t\t\t\t\t Username : ";
+        cout << "\n\n\n\n\n\n\n\n\t\t\t\t\t\t Username : ";
         cin >> username;
-        cout << "\n\n\t\t\t\t\t\t Password : ";
+        cout << "\n\t\t\t\t\t\t Password : ";
         cin >> password;
 
         ifstream login_file("Login_Data.dat");
@@ -157,6 +192,7 @@ public:
             if (file_user == username && file_pass == password) {
                 cout << "\n\n\t\t\t\t\t\t Login successful.\n";
                 login_file.close();
+                getch();
                 return true;
             }
         }
@@ -195,25 +231,18 @@ int loginMenu() {
 }
 
 int main() {
-    int loginChoice;
-    LoginManager loginManager;
+   // int loginChoice;
+   // LoginManager loginManager;
     while (true) {
-        system("cls");
-        cout << "\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t************************************************\n";
-        cout << "\t\t\t\t\t\t\t=================================================\n";
-        cout << "\t\t\t\t\t\t\t||                                                  ||\n";
-        cout << "\t\t\t\t\t\t\t||         ---------------------------------        ||\n";
-        cout << "\t\t\t\t\t\t\t||        **Contact Management System**             ||\n";
-        cout << "\t\t\t\t\t\t\t||         ---------------------------------        ||\n";
-        cout << "\t\t\t\t\t\t\t||                                                  ||\n";
-        cout << "\t\t\t\t\t\t\t||                                                  ||\n";
-        cout << "\t\t\t\t\t\t\t||                                                  ||\n";
-        cout << "\t\t\t\t\t\t\t==================================================\n";
-        cout << "\t\t\t\t\t\t\t******************************************************\n\n\n";
-        cout << " \n\n\n\t\t\t\t\t\t\t Press any key to continue:";
-        getch();
-        system("cls");
-
+    	flag:
+    	system("cls");
+        Title head;
+        head.gettitle();
+       /* cout<< " \n\n\n\t\t\t\t\t\t\t Press any key to continue:";
+         getch(); */
+         int loginChoice;
+         LoginManager loginManager;
+    
         loginChoice = loginMenu();
         switch (loginChoice) {
             case 1:
@@ -227,16 +256,19 @@ int main() {
                         int choice;
 
                         while (true) {
-                            cout << "\t\t*** CONTACT MANAGEMENT SYSTEM!!! ***\n";
-                            cout << "\t\t=====================================\n";
-                            cout << "\t\t\t***MAIN MENU***\n";
-                            cout << "\t\t\t[1] Add a new contact\n";
-                            cout << "\t\t\t[2] List all contacts\n";
-                            cout << "\t\t\t[3] Search for contact\n";
-                            cout << "\t\t\t[4] Delete any contact\n";
-                            cout << "\t\t\t[0] Exit\n";
-                            cout << "\t\t=====================================\n";
-                            cout << "\t\t\tEnter your choice between [0-4]: ";
+                           	system("cls");
+                              Title head;
+                              head.gettitle();
+                       //   cout << "\n\n\n\n\n\\n\n\n\t\t*** CONTACT MANAGEMENT SYSTEM!!! ***\n";
+                            cout << "\t\t\t\t\t\t\t\t=====================================\n";
+                            cout << "\t\t\t\t\t\t\t\t***MAIN MENU***\n";
+                            cout << "\t\t\t\t\t\t\t\t[1] Add a new contact\n";
+                            cout << "\t\t\t\t\t\t\t\t[2] List all contacts\n";
+                            cout << "\t\t\t\t\t\t\t\t[3] Search for contact\n";
+                            cout << "\t\t\t\t\t\t\t\t[4] Delete any contact\n";
+                            cout << "\t\t\t\t\t\t\t\t[0] Exit\n";
+                            cout << "\t\t\t\t\t\t\t\t=====================================\n";
+                            cout << "\t\t\t\t\t\t\t\tEnter your choice between [0-4]: ";
                             cin >> choice;
 
                             switch (choice) {
@@ -244,31 +276,43 @@ int main() {
                                     system("cls");
                                     contact.getdata();
                                     contact.writeonfile();
+                                    cout<< " \n\n\n\t\t\t\t\t\t\t Press any key to continue:";
+                                    getch();
                                     break;
 
                                 case 2:
                                     system("cls");
                                     contact.readfromfile();
+                                    cout<< " \n\n\n\t\t\t\t\t\t\t Press any key to continue:";
+                                    getch();
                                     break;
 
                                 case 3:
                                     system("cls");
                                     contact.searchfromfile();
+                                    cout<< " \n\n\n\t\t\t\t\t\t\t Press any key to continue:";
+                                    getch();
                                     break;
 
                                 case 4:
                                     system("cls");
                                     contact.deletefromfile();
+                                    cout<< " \n\n\n\t\t\t\t\t\t\t Press any key to continue:";
+                                    getch();
                                     break;
 
                                 case 0:
                                     system("cls");
                                     cout << "\t\t\t ******* Thank you For Using CMS *******\n\n";
+                                    cout<< " \n\n\n\t\t\t\t\t\t\t Press any key to continue:";
+                                    getch();
                                     exit(0);
                                     break;
 
                                 default:
-                                    cout << "\nInvalid choice! Please enter a valid option.\n";
+                                    cout << "\n Invalid choice! Please enter a valid option.\n";
+                                    cout<< " \n\n\n\t\t\t\t\t\t\t Press any key to continue:";
+                                    getch();
                                     break;
                             }
                         }
@@ -287,11 +331,11 @@ int main() {
             default:
                 cout << "\n\n\t\t\t\t\t\t Invalid choice. Please try again.\n";
                 getch();
+                goto flag;
                 break;
         }
     }
 
     return 0;
 }
-
 
