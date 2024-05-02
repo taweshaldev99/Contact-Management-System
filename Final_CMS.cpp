@@ -77,7 +77,7 @@ public:
         }
 
         F1.write(reinterpret_cast<char*>(this), sizeof(*this));
-        cout << "\t\t*** Contact Successfully Created!!!\n";
+        cout << "\n\n\t\t*** Contact Successfully Created!!!\n";
         F1.close();
     }
 
@@ -261,7 +261,7 @@ int main() {
                               head.gettitle();
                        //   cout << "\n\n\n\n\n\\n\n\n\t\t*** CONTACT MANAGEMENT SYSTEM!!! ***\n";
                             cout << "\t\t\t\t\t\t\t\t=====================================\n";
-                            cout << "\t\t\t\t\t\t\t\t***MAIN MENU***\n";
+                            cout << "\t\t\t\t\t\t\t\t\t***MAIN MENU***\n";
                             cout << "\t\t\t\t\t\t\t\t[1] Add a new contact\n";
                             cout << "\t\t\t\t\t\t\t\t[2] List all contacts\n";
                             cout << "\t\t\t\t\t\t\t\t[3] Search for contact\n";
